@@ -1,4 +1,4 @@
-  console.log(Math.ceil(6.1)) // a função ceil faz o arredondamento para cima flow faz o arredondamento para baixo
+  console.log(Math.ceil(6.1)) // a função ceil faz o arredondamento para cima floor faz o arredondamento para baixo
 
   const obj1 = {}
   obj1.nome = 'Bola'
