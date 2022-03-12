@@ -1,0 +1,19 @@
+/*aplicando estilo a uma class*/
+.fundoVermelho {
+	background-color: #C00;
+	margin-bottom: 50px;
+}
+
+.negrito {
+	font-weight: bold;
+}
+
+/*aplicando estilo a um id*/
+#textoPrincipal {
+	font-size: 40px;
+	font-weight: bold;
+	color: #fff;
+	padding: 10px;
+	background-color: #444;
+	margin-bottom: 50px;
+}
