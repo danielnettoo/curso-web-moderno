@@ -23,3 +23,5 @@ console.log(logradouro, numero, cep)
 
 const { conta: { ag, num } } = pessoa
 console.log(ag, num)
+
+//tentando acessar algo que não foi declarado
