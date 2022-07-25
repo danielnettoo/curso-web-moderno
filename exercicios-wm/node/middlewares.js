@@ -1,4 +1,5 @@
 // middleware pattern (chain of responsibility)
+// ctx é um objeto que vai ser passado de um passo para o outro (de um middleware para o outro). Esse objeto carrega os dados
 const passo1 = (ctx, next) => {
     ctx.valor1 = 'mid1'
     next()

@@ -2,25 +2,42 @@ const porta = 3030
 
 const express = require('express')
 const app = express()
+const bodyParser = require("body-parser")
 const bancoDeDados = require('./bancoDeDados')
 
+app.use(bodyParser.urlencoded({extended: true}))
 
-
-app.get('/produtos', (req, res) => {
-	res.send(bancoDeDados.getProdutos())  //Converte automaticamente para JSON
+app.get('/produtos', (req, res, next) => {		// o "/produtos" trás todos os produtos
+	res.send(bancoDeDados.getProdutos())  // Método .send Converte automaticamente para JSON
 })
 
-app.get('/produtos/:id', (req, res) => {
+app.get('/produtos/:id', (req, res, next) => {		// o :id é a informação referenta ao parâmentro "id"
 	res.send(bancoDeDados.getProduto(req.params.id))
 })
 
-app.post('/produtos', (req, res) => {
+app.post('/produtos', (req, res, next) => {
 	const produto = bancoDeDados.salvarProduto({
-		nome: req.body.name,
+		nome: req.body.nome,
 		preco: req.body.preco
 	})
 	res.send(produto) //Converte em JSON
 })
+
+app.put('/produtos/:id', (req, res, next) => {
+	const produto = bancoDeDados.salvarProduto({
+		id: req.params.id,
+		nome: req.body.nome,
+		preco: req.body.preco
+	})
+	res.send(produto) //Converte em JSON
+})
+
+app.delete('/produtos/:id', (req, res, next) => {
+	const produto = bancoDeDados.excluirProduto(req.params.id)
+	res.send(produto) //Converte em JSON
+})
+
+
 
 app.listen(porta, () => {
 	console.log(`Servidor executando na porta ${porta}`)
