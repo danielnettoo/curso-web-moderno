@@ -7,9 +7,9 @@ if(anonimo) {
 } else {
     process.stdout.write('Informe o seu nome: ')
     process.stdin.on('data', data => {
-        const nome = data.toString().replace('\n', '')
+        const nome = data.toString().replace('\n', '')   // o replece retira o /n pois ele vem junto com os dados do "data" que foram digitados
 
-        process.stdout.write(`Fala ${nome}!!\n`)
+        process.stdout.write(` Fala ${nome} !\n`)
         process.exit()
     })
 }
