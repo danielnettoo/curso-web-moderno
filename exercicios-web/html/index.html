@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Exercícios HMTL</title>
+		<style>
+			#conteudo {
+				padding: 30px 0px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header>
+			<h1>Exercícios HTML</h1>
+		</header>
+
+		<!--Nesse caso abaixo criamos um propriedade personalizada que chamamos e wm-nav-->
+
+		<nav>
+			<a href wm-nav="exercicios/teste.html">00 TESTE1</a> |
+			<a href wm-nav="exercicios/teste2.html">01 TESTE2</a> |
+			<a href wm-nav="exercicios/texto1.html">02 TEXTO1</a> |
+			<a href wm-nav="exercicios/texto2.html">03 TEXTO2</a> |
+			<a href wm-nav="exercicios/listas.html">04 LISTAS</a> |
+			<a href wm-nav="exercicios/listaAninhada.html">05 LISTA ANINHADA</a> |
+			<a href wm-nav="exercicios/links.html">08 LINKS</a> |
+		</nav>
+
+		<section id="conteudo"></section>
+		<footer>Curso de Web Moderno</footer>
+
+		<script>
+
+			//Nas linhas abaixo nós pegamos as Tags, varremos as Tags, atribuíndo uma função para um evento onClick e realizando uma requisição Ajax
+
+			document.querySelectorAll('[wm-nav]').forEach(link => {		//dentro do querySelectorAll eu passo a tag que eu quero dentro do paramêtro
+				const conteudo = document.getElementById('conteudo')
+
+				link.onclick = function (e) {
+					e.preventDefault()		// previne que o comportamento padrão de navegação ocorra, não permitindo que carregue para a outra pagina
+					fetch(link.getAttribute('wm-nav'))		// fetch - baseado em promises para realizar requisição ajax
+						.then(resp => resp.text())
+						.then(html => conteudo.innerHTML = html)
+				}
+			})
+		</script>
+
+
+	</body>
+
+</html>
